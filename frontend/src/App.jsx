@@ -1,13 +1,36 @@
 import React from 'react';
-
-import PhotoListItem from './components/PhotoListItem';
+import HomeRoute from './routes/HomeRoute';
+import useApplicationData from 'hooks/useApplicationData';
 import './App.scss';
 
-// Note: Rendering a single component to build components in isolation
 const App = () => {
+  const {
+    state: {
+      favorites,
+      isModalOpen,
+      selectedPhoto,
+      photoData,
+      topicData,
+    },
+    openModal,
+    closeModal,
+    toggleFavorite,
+    changeTopic
+  } = useApplicationData();
+
   return (
     <div className="App">
-      <PhotoListItem/>
+      <HomeRoute 
+        favorites={favorites}
+        isModalOpen={isModalOpen}
+        selectedPhoto={selectedPhoto}
+        photoData={photoData}
+        openModal={openModal}
+        closeModal={closeModal}
+        toggleFavorite={toggleFavorite}
+        topicData={topicData}
+        changeTopic={changeTopic}
+      />
     </div>
   );
 };
